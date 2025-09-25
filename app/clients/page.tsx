@@ -35,11 +35,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
-import { mockClients } from "@/lib/mock/clients"
 import { Client } from "@/lib/types"
+import { getClients } from "@/lib/api"
 
-export default function Clients() {
-  const clients: Client[] = mockClients;
+export default async function Clients() {
+  const clients: Client[] = await getClients();
 
   const getStatusColor = (status: string) => {
     switch (status) {

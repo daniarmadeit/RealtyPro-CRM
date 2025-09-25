@@ -61,7 +61,6 @@ export default function Dashboard() {
             <Button variant="ghost" size="icon">
               <Bell className="w-5 h-5" />
             </Button>
-            {/* Dropdown menu to profile section */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="flex items-center gap-2 hover:bg-gray-50 rounded-lg p-2 transition-colors">

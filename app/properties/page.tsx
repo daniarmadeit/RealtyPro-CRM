@@ -39,11 +39,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import Image from "next/image"
-import { mockProperties } from "@/lib/mock/properties"
 import { Property } from "@/lib/types"
+import { getProperties } from "@/lib/api"
 
-export default function Properties() {
-  const properties: Property[] = mockProperties;
+export default async function Properties() {
+  const properties: Property[] = await getProperties();
 
   const getStatusColor = (status: string) => {
     switch (status) {

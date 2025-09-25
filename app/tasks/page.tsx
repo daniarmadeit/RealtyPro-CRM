@@ -39,11 +39,11 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
-import { mockTasks } from "@/lib/mock/tasks"
 import { Task } from "@/lib/types"
+import { getTasks } from "@/lib/api"
 
-export default function Tasks() {
-  const tasks: Task[] = mockTasks;
+export default async function Tasks() {
+  const tasks: Task[] = await getTasks();
 
   const getStatusColor = (status: string) => {
     switch (status) {
