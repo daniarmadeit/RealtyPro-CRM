@@ -38,6 +38,7 @@ import Link from "next/link"
 import { Client } from "@/lib/types"
 import { getClients } from "@/lib/api"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CreateClientForm } from "@/components/forms/create-client-form"
 
 export default async function Clients() {
   const clients: Client[] = await getClients();
@@ -226,10 +227,7 @@ export default async function Clients() {
               </Button>
             </div>
 
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Client
-            </Button>
+            <CreateClientForm />
           </div>
 
           {/* Clients Grid */}

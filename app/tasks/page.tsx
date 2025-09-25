@@ -42,6 +42,7 @@ import Link from "next/link"
 import { Task } from "@/lib/types"
 import { getTasks } from "@/lib/api"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CreateTaskForm } from "@/components/forms/create-task-form"
 
 export default async function Tasks() {
   const tasks: Task[] = await getTasks();
@@ -219,10 +220,7 @@ export default async function Tasks() {
             <h1 className="text-2xl font-bold text-foreground mb-2">Tasks</h1>
             <p className="text-muted-foreground">Manage your real estate tasks and stay organized.</p>
             <div className="flex gap-3 mt-4">
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                <Plus className="w-4 h-4 mr-2" />
-                Add Task
-              </Button>
+              <CreateTaskForm />
               <Button variant="outline">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter Tasks

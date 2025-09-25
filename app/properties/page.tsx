@@ -42,6 +42,7 @@ import Image from "next/image"
 import { Property } from "@/lib/types"
 import { getProperties } from "@/lib/api"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CreatePropertyForm } from "@/components/forms/create-property-form"
 
 export default async function Properties() {
   const properties: Property[] = await getProperties();
@@ -226,10 +227,7 @@ export default async function Properties() {
                   <List className="w-4 h-4" />
                 </Button>
               </div>
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                <Plus className="w-4 h-4 mr-2" />
-                Add Property
-              </Button>
+              <CreatePropertyForm />
             </div>
           </div>
 
