@@ -41,6 +41,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Property } from "@/lib/types"
 import { getProperties } from "@/lib/api"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default async function Properties() {
   const properties: Property[] = await getProperties();
@@ -59,28 +60,29 @@ export default async function Properties() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
+      <header className="bg-card border-b border-border px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
                 <Home className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-semibold text-gray-900">RealtyPro</span>
+              <span className="text-xl font-semibold text-foreground">RealtyPro</span>
             </div>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search properties"
-                className="pl-10 pr-16 py-2 w-80 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="pl-10 pr-16 py-2 w-80 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground"
               />
               <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">⌘F</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Button variant="ghost" size="icon">
               <Mail className="w-5 h-5" />
             </Button>
@@ -89,14 +91,14 @@ export default async function Properties() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-2 hover:bg-gray-50 rounded-lg p-2 transition-colors">
+                <button className="flex items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors">
                   <Avatar className="w-8 h-8">
                     <AvatarImage src="/professional-headshot.png" />
                     <AvatarFallback>TM</AvatarFallback>
                   </Avatar>
                   <div className="text-sm text-left">
-                    <div className="font-medium">Totok Michael</div>
-                    <div className="text-gray-500">tmichael20@gmail.com</div>
+                    <div className="font-medium text-gray-900 dark:text-white">Totok Michael</div>
+                    <div className="text-gray-500 dark:text-gray-400">tmichael20@gmail.com</div>
                   </div>
                   <ChevronDown className="w-4 h-4 text-gray-400" />
                 </button>
@@ -127,31 +129,31 @@ export default async function Properties() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen">
+        <aside className="w-64 bg-card border-r border-border min-h-screen">
           <div className="p-6">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-4">MENU</div>
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">MENU</div>
             <nav className="space-y-2">
-              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg">
+              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg">
                 <BarChart3 className="w-4 h-4" />
                 Dashboard
               </Link>
               <Link
                 href="/properties"
-                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 rounded-lg font-medium"
+                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-lg font-medium"
               >
                 <Building className="w-4 h-4" />
                 Properties
               </Link>
               <Link
                 href="/clients"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg"
               >
                 <UserCheck className="w-4 h-4" />
                 Clients
               </Link>
               <Link
                 href="/tasks"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg"
               >
                 <CheckSquare className="w-4 h-4" />
                 Tasks
@@ -159,14 +161,14 @@ export default async function Properties() {
               </Link>
               <Link
                 href="/analytics"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg"
               >
                 <BarChart3 className="w-4 h-4" />
                 Analytics
               </Link>
               <Link
                 href="/calendar"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg"
               >
                 <Calendar className="w-4 h-4" />
                 Calendar
@@ -178,8 +180,8 @@ export default async function Properties() {
         {/* Main Content */}
         <main className="flex-1 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Properties</h1>
-            <p className="text-gray-600">Manage your property listings and track sales performance.</p>
+            <h1 className="text-2xl font-bold text-foreground mb-2">Properties</h1>
+            <p className="text-muted-foreground">Manage your property listings and track sales performance.</p>
           </div>
 
           {/* Filters and Actions */}

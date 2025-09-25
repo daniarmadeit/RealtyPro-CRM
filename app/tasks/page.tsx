@@ -41,6 +41,7 @@ import {
 import Link from "next/link"
 import { Task } from "@/lib/types"
 import { getTasks } from "@/lib/api"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default async function Tasks() {
   const tasks: Task[] = await getTasks();
@@ -48,30 +49,30 @@ export default async function Tasks() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
-        return "bg-green-100 text-green-800"
+        return "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300"
       case "in_progress":
-        return "bg-blue-100 text-blue-800"
+        return "bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300"
       case "pending":
-        return "bg-yellow-100 text-yellow-800"
+        return "bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300"
       case "cancelled":
-        return "bg-red-100 text-red-800"
+        return "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300"
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-muted text-muted-foreground"
     }
   }
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "urgent":
-        return "bg-red-100 text-red-800"
+        return "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300"
       case "high":
-        return "bg-red-100 text-red-800"
+        return "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300"
       case "medium":
-        return "bg-orange-100 text-orange-800"
+        return "bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300"
       case "low":
-        return "bg-green-100 text-green-800"
+        return "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300"
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-muted text-muted-foreground"
     }
   }
 
@@ -95,28 +96,29 @@ export default async function Tasks() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
+      <header className="bg-card border-b border-border px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
                 <Home className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-semibold text-gray-900">RealtyPro</span>
+              <span className="text-xl font-semibold text-foreground">RealtyPro</span>
             </div>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search tasks"
-                className="pl-10 pr-16 py-2 w-80 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="pl-10 pr-16 py-2 w-80 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground"
               />
-              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">⌘F</span>
+              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground text-sm">⌘F</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Button variant="ghost" size="icon">
               <Mail className="w-5 h-5" />
             </Button>
@@ -125,16 +127,16 @@ export default async function Tasks() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-2 hover:bg-gray-50 rounded-lg p-2 transition-colors">
+                <button className="flex items-center gap-2 hover:bg-muted rounded-lg p-2 transition-colors">
                   <Avatar className="w-8 h-8">
                     <AvatarImage src="/professional-headshot.png" />
                     <AvatarFallback>TM</AvatarFallback>
                   </Avatar>
                   <div className="text-sm text-left">
-                    <div className="font-medium">Totok Michael</div>
-                    <div className="text-gray-500">tmichael20@gmail.com</div>
+                    <div className="font-medium text-foreground">Totok Michael</div>
+                    <div className="text-muted-foreground">tmichael20@gmail.com</div>
                   </div>
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
+                  <ChevronDown className="w-4 h-4 text-muted-foreground" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
@@ -163,31 +165,31 @@ export default async function Tasks() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen">
+        <aside className="w-64 bg-card border-r border-border min-h-screen">
           <div className="p-6">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-4">MENU</div>
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">MENU</div>
             <nav className="space-y-2">
-              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg">
+              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg">
                 <BarChart3 className="w-4 h-4" />
                 Dashboard
               </Link>
               <Link
                 href="/properties"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <Building className="w-4 h-4" />
                 Properties
               </Link>
               <Link
                 href="/clients"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <UserCheck className="w-4 h-4" />
                 Clients
               </Link>
               <Link
                 href="/tasks"
-                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 rounded-lg font-medium"
+                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-lg font-medium"
               >
                 <CheckSquare className="w-4 h-4" />
                 Tasks
@@ -195,14 +197,14 @@ export default async function Tasks() {
               </Link>
               <Link
                 href="/analytics"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <BarChart3 className="w-4 h-4" />
                 Analytics
               </Link>
               <Link
                 href="/calendar"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <Calendar className="w-4 h-4" />
                 Calendar
@@ -214,8 +216,8 @@ export default async function Tasks() {
         {/* Main Content */}
         <main className="flex-1 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Tasks</h1>
-            <p className="text-gray-600">Manage your real estate tasks and stay organized.</p>
+            <h1 className="text-2xl font-bold text-foreground mb-2">Tasks</h1>
+            <p className="text-muted-foreground">Manage your real estate tasks and stay organized.</p>
             <div className="flex gap-3 mt-4">
               <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
                 <Plus className="w-4 h-4 mr-2" />
@@ -233,44 +235,44 @@ export default async function Tasks() {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-medium text-gray-600">Total Tasks</h3>
-                  <CheckSquare className="w-4 h-4 text-gray-400" />
+                  <h3 className="text-sm font-medium text-muted-foreground">Total Tasks</h3>
+                  <CheckSquare className="w-4 h-4 text-muted-foreground" />
                 </div>
                 <div className="text-3xl font-bold mb-2">24</div>
-                <div className="text-sm text-gray-500">All active tasks</div>
+                <div className="text-sm text-muted-foreground">All active tasks</div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-medium text-gray-600">Pending</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground">Pending</h3>
                   <Clock className="w-4 h-4 text-yellow-500" />
                 </div>
                 <div className="text-3xl font-bold mb-2">8</div>
-                <div className="text-sm text-gray-500">Awaiting action</div>
+                <div className="text-sm text-muted-foreground">Awaiting action</div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-medium text-gray-600">In Progress</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground">In Progress</h3>
                   <AlertCircle className="w-4 h-4 text-blue-500" />
                 </div>
                 <div className="text-3xl font-bold mb-2">12</div>
-                <div className="text-sm text-gray-500">Currently active</div>
+                <div className="text-sm text-muted-foreground">Currently active</div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-medium text-gray-600">Completed</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground">Completed</h3>
                   <CheckCircle className="w-4 h-4 text-green-500" />
                 </div>
                 <div className="text-3xl font-bold mb-2">4</div>
-                <div className="text-sm text-gray-500">This week</div>
+                <div className="text-sm text-muted-foreground">This week</div>
               </CardContent>
             </Card>
           </div>
@@ -292,11 +294,11 @@ export default async function Tasks() {
               <div className="space-y-4">
                 {tasks.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="mx-auto bg-gray-100 rounded-full p-3 w-16 h-16 flex items-center justify-center mb-4">
-                      <CheckSquare className="w-8 h-8 text-gray-600" />
+                    <div className="mx-auto bg-muted rounded-full p-3 w-16 h-16 flex items-center justify-center mb-4">
+                      <CheckSquare className="w-8 h-8 text-muted-foreground" />
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Нет задач</h3>
-                    <p className="text-gray-500 mb-4">Создайте первую задачу для организации работы</p>
+                    <h3 className="text-lg font-medium text-foreground mb-2">Нет задач</h3>
+                    <p className="text-muted-foreground mb-4">Создайте первую задачу для организации работы</p>
                     <Button>
                       <Plus className="w-4 h-4 mr-2" />
                       Создать задачу
@@ -306,7 +308,7 @@ export default async function Tasks() {
                   tasks.map((task) => (
                   <div
                     key={task.id}
-                    className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-4 p-4 border border-border rounded-lg hover:bg-muted transition-colors bg-card"
                   >
                     <div className="flex items-center justify-center w-10 h-10 bg-emerald-100 rounded-lg">
                       {getTypeIcon(task.type)}
@@ -314,7 +316,7 @@ export default async function Tasks() {
 
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-gray-900">{task.title}</h3>
+                        <h3 className="font-medium text-foreground">{task.title}</h3>
                         <Badge className={getPriorityColor(task.priority)} variant="secondary">
                           {task.priority}
                         </Badge>
@@ -322,8 +324,8 @@ export default async function Tasks() {
                           {task.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-gray-600 mb-2">{task.description}</p>
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <p className="text-sm text-muted-foreground mb-2">{task.description}</p>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <div className="flex items-center gap-1">
                           <User className="w-3 h-3" />
                           {task.client}
@@ -350,7 +352,7 @@ export default async function Tasks() {
                               .join("")}
                           </AvatarFallback>
                         </Avatar>
-                        <span className="text-sm text-gray-600">{task.assignedTo}</span>
+                        <span className="text-sm text-muted-foreground">{task.assignedTo}</span>
                       </div>
 
                       <DropdownMenu>

@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { useState } from "react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState(new Date())
@@ -125,28 +126,29 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
+      <header className="bg-card border-b border-border px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
                 <Home className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-semibold text-gray-900">RealtyPro</span>
+              <span className="text-xl font-semibold text-foreground">RealtyPro</span>
             </div>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search appointments"
-                className="pl-10 pr-16 py-2 w-80 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="pl-10 pr-16 py-2 w-80 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground"
               />
-              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">⌘F</span>
+              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground text-sm">⌘F</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Button variant="ghost" size="icon">
               <Mail className="w-5 h-5" />
             </Button>
@@ -155,16 +157,16 @@ export default function CalendarPage() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-2 hover:bg-gray-50 rounded-lg p-2 transition-colors">
+                <button className="flex items-center gap-2 hover:bg-muted rounded-lg p-2 transition-colors">
                   <Avatar className="w-8 h-8">
                     <AvatarImage src="/professional-headshot.png" />
                     <AvatarFallback>TM</AvatarFallback>
                   </Avatar>
                   <div className="text-sm text-left">
-                    <div className="font-medium">Totok Michael</div>
-                    <div className="text-gray-500">tmichael20@gmail.com</div>
+                    <div className="font-medium text-foreground">Totok Michael</div>
+                    <div className="text-muted-foreground">tmichael20@gmail.com</div>
                   </div>
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
+                  <ChevronDown className="w-4 h-4 text-muted-foreground" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
@@ -193,31 +195,31 @@ export default function CalendarPage() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen">
+        <aside className="w-64 bg-card border-r border-border min-h-screen">
           <div className="p-6">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-4">MENU</div>
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">MENU</div>
             <nav className="space-y-2">
-              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg">
+              <Link href="/" className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg">
                 <BarChart3 className="w-4 h-4" />
                 Dashboard
               </Link>
               <Link
                 href="/properties"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <Building className="w-4 h-4" />
                 Properties
               </Link>
               <Link
                 href="/clients"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <UserCheck className="w-4 h-4" />
                 Clients
               </Link>
               <Link
                 href="/tasks"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <CheckSquare className="w-4 h-4" />
                 Tasks
@@ -225,14 +227,14 @@ export default function CalendarPage() {
               </Link>
               <Link
                 href="/analytics"
-                className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 text-muted-foreground hover:bg-muted rounded-lg"
               >
                 <BarChart3 className="w-4 h-4" />
                 Analytics
               </Link>
               <Link
                 href="/calendar"
-                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 rounded-lg font-medium"
+                className="flex items-center gap-3 px-3 py-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-lg font-medium"
               >
                 <Calendar className="w-4 h-4" />
                 Calendar
@@ -244,8 +246,8 @@ export default function CalendarPage() {
         {/* Main Content */}
         <main className="flex-1 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Calendar</h1>
-            <p className="text-gray-600">Manage your appointments, showings, and meetings.</p>
+            <h1 className="text-2xl font-bold text-foreground mb-2">Calendar</h1>
+            <p className="text-muted-foreground">Manage your appointments, showings, and meetings.</p>
             <div className="flex gap-3 mt-4">
               <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
                 <Plus className="w-4 h-4 mr-2" />
@@ -278,7 +280,7 @@ export default function CalendarPage() {
                 {/* Calendar Grid */}
                 <div className="grid grid-cols-7 gap-1 mb-4">
                   {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                    <div key={day} className="p-2 text-center text-sm font-medium text-gray-500">
+                    <div key={day} className="p-2 text-center text-sm font-medium text-muted-foreground">
                       {day}
                     </div>
                   ))}
@@ -298,9 +300,9 @@ export default function CalendarPage() {
                             ? isToday
                               ? "bg-emerald-600 text-white font-medium"
                               : hasEvents
-                                ? "bg-blue-50 text-blue-900 hover:bg-blue-100"
-                                : "text-gray-900 hover:bg-gray-50"
-                            : "text-gray-300"
+                                ? "bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/30"
+                                : "text-foreground hover:bg-muted"
+                            : "text-muted-foreground"
                         }`}
                       >
                         {isCurrentMonth ? day : ""}
@@ -318,7 +320,7 @@ export default function CalendarPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Today's Schedule</CardTitle>
-                <p className="text-sm text-gray-500">December 12, 2024</p>
+                <p className="text-sm text-muted-foreground">December 12, 2024</p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -330,7 +332,7 @@ export default function CalendarPage() {
                           {event.status}
                         </Badge>
                       </div>
-                      <div className="space-y-1 text-xs text-gray-500">
+                      <div className="space-y-1 text-xs text-muted-foreground">
                         <div className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {event.time} ({event.duration})
@@ -363,16 +365,16 @@ export default function CalendarPage() {
               <CardContent>
                 <div className="space-y-4">
                   {upcomingEvents.map((event) => (
-                    <div key={event.id} className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg">
+                    <div key={event.id} className="flex items-center gap-4 p-4 border border-border rounded-lg">
                       <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
                         <Calendar className="w-5 h-5 text-emerald-600" />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-medium">{event.title}</h4>
-                        <div className="text-sm text-gray-500 mt-1">
+                        <div className="text-sm text-muted-foreground mt-1">
                           {event.date} at {event.time}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-muted-foreground">
                           {event.client} • {event.property}
                         </div>
                       </div>
@@ -398,27 +400,27 @@ export default function CalendarPage() {
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Total Appointments</span>
+                    <span className="text-sm text-muted-foreground">Total Appointments</span>
                     <span className="font-semibold">18</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Property Showings</span>
+                    <span className="text-sm text-muted-foreground">Property Showings</span>
                     <span className="font-semibold">12</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Client Meetings</span>
+                    <span className="text-sm text-muted-foreground">Client Meetings</span>
                     <span className="font-semibold">4</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Inspections</span>
+                    <span className="text-sm text-muted-foreground">Inspections</span>
                     <span className="font-semibold">2</span>
                   </div>
-                  <div className="pt-4 border-t border-gray-200">
+                  <div className="pt-4 border-t border-border">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-gray-900">Completion Rate</span>
+                      <span className="text-sm font-medium text-foreground">Completion Rate</span>
                       <span className="font-semibold text-emerald-600">94%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div className="w-full bg-muted rounded-full h-2 mt-2">
                       <div className="bg-emerald-600 h-2 rounded-full" style={{ width: "94%" }}></div>
                     </div>
                   </div>
