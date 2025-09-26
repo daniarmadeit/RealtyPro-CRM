@@ -1,50 +1,83 @@
 # RealtyPro CRM
 
-A modern CRM system for real estate professionals built with Next.js 14, React, and Tailwind CSS.
+A modern **CRM system for real estate agencies** built with Next.js 14, React, and Tailwind CSS.  
+Manage properties, clients, tasks, analytics, and calendar — all in one place.  
+Includes dark mode and a mock AI Assistant for smart suggestions.
 
-## Features
+---
 
-- **Dashboard** - Overview of key metrics and activities
-- **Properties Management** - Manage property listings and details
-- **Client Management** - Track clients and their information
-- **Task Management** - Organize and track tasks
-- **Calendar** - Schedule and view appointments
-- **Analytics** - Business insights and reporting
-- **Dark Theme Support** - Full dark/light theme toggle
-- **AI Chat Assistant** - Built-in AI assistance
+## 🚀 Live Demo
+👉 [realty-pro-crm.vercel.app](https://realty-pro-crm.vercel.app)
 
-## Tech Stack
+---
 
-- **Framework**: Next.js 14
-- **UI**: React + Tailwind CSS
-- **Components**: Radix UI + shadcn/ui
-- **Forms**: React Hook Form + Zod validation
-- **Charts**: Recharts
-- **Icons**: Lucide React
-- **Theme**: next-themes
+## 🎥 Loom Walkthrough
+Watch a short demo video:  
+👉 [Loom Demo](https://www.loom.com/share/your-demo-id)
 
-## Getting Started
+*(Shows adding property/client/task → calendar → analytics → AI chat)*
 
-1. Clone the repository
-2. Install dependencies:
+---
+
+## ✨ Features
+
+- 📊 **Dashboard** – overview of key metrics and activities  
+- 🏠 **Properties Management** – manage property listings and details  
+- 👤 **Client Management** – track clients and their information  
+- ✅ **Task Management** – organize and track tasks  
+- 📅 **Calendar** – schedule and view appointments  
+- 📈 **Analytics** – business insights and reporting  
+- 🌑 **Dark Theme Support** – light/dark mode toggle  
+- 🤖 **AI Chat Assistant (mock)** – built-in assistant for price & ad copy suggestions  
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 14 (App Router)  
+- **UI**: React + Tailwind CSS  
+- **Components**: Radix UI + shadcn/ui  
+- **Forms**: React Hook Form + Zod validation  
+- **Charts**: Recharts  
+- **Icons**: Lucide React  
+- **Theme**: next-themes  
+
+---
+
+## 📂 Getting Started
+
+1. Clone the repository  
    ```bash
-   npm install
-   ```
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+   git clone https://github.com/your-username/RealtyPro.git
+   cd RealtyPro
+Install dependencies
 
-## Deploy on Vercel
+bash
+Копировать код
+npm install
+Run the development server
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/RealtyPro)
+bash
+Копировать код
+npm run dev
+Open http://localhost:3000 in your browser
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+☁️ Deploy on Vercel
 
-## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
+The easiest way to deploy your Next.js app is to use the Vercel Platform.
+
+📌 Roadmap
+🔹 Supabase integration (auth + database)
+🔹 Real API endpoints for CRUD operations
+🔹 AI-powered property price estimation
+🔹 Multi-user roles and permissions
+🔹 File uploads (property images, docs)
+
+📜 Scripts
+npm run dev – start development server
+npm run build – build for production
+npm start – run production server
+npm run lint – run ESLint
+
+👨‍💻 Built as an Upwork case study to showcase a modern SaaS CRM with AI features.
